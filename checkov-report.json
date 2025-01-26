@@ -503,10 +503,10 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy/grant",
-                        "acl",
-                        "access_control_policy/grant/*/permission",
-                        "access_control_policy/grant/*/grantee/uri",
                         "resource_type",
+                        "access_control_policy/grant/*/permission",
+                        "acl",
+                        "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
                 },
@@ -605,10 +605,10 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy/grant",
-                        "acl",
-                        "access_control_policy/grant/*/permission",
-                        "access_control_policy/grant/*/grantee/uri",
                         "resource_type",
+                        "access_control_policy/grant/*/permission",
+                        "acl",
+                        "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
                 },
@@ -689,8 +689,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
@@ -788,8 +788,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
@@ -1491,187 +1491,6 @@
                 "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
             },
             {
-                "check_id": "CKV_AWS_21",
-                "bc_check_id": "BC_AWS_S3_16",
-                "check_name": "Ensure all data stored in the S3 bucket have versioning enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "insecure_bucket": {
-                                "__end_line__": 9,
-                                "__start_line__": 1,
-                                "acl": [
-                                    "public-read"
-                                ],
-                                "bucket": [
-                                    "example-insecure-bucket"
-                                ],
-                                "tags": [
-                                    {
-                                        "Environment": "Dev",
-                                        "Name": "Insecure Bucket"
-                                    }
-                                ],
-                                "__address__": "aws_s3_bucket.insecure_bucket"
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "versioning/enabled",
-                        "resource_type",
-                        "versioning_configuration/status"
-                    ]
-                },
-                "code_block": [
-                    [
-                        1,
-                        "resource \"aws_s3_bucket\" \"insecure_bucket\" {\n"
-                    ],
-                    [
-                        2,
-                        "  bucket = \"example-insecure-bucket\"\n"
-                    ],
-                    [
-                        3,
-                        "  acl    = \"public-read\" # Vulnerabilidad: Permiso p\u00fablico\n"
-                    ],
-                    [
-                        4,
-                        "\n"
-                    ],
-                    [
-                        5,
-                        "  tags = {\n"
-                    ],
-                    [
-                        6,
-                        "    Name        = \"Insecure Bucket\"\n"
-                    ],
-                    [
-                        7,
-                        "    Environment = \"Dev\"\n"
-                    ],
-                    [
-                        8,
-                        "  }\n"
-                    ],
-                    [
-                        9,
-                        "}\n"
-                    ]
-                ],
-                "file_path": "/insecure_bucket.tf",
-                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf",
-                "repo_file_path": "/repo2/insecure_bucket.tf",
-                "file_line_range": [
-                    1,
-                    9
-                ],
-                "resource": "aws_s3_bucket.insecure_bucket",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Environment": "Dev",
-                    "Name": "Insecure Bucket"
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": null,
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf"
-            },
-            {
-                "check_id": "CKV_AWS_21",
-                "bc_check_id": "BC_AWS_S3_16",
-                "check_name": "Ensure all data stored in the S3 bucket have versioning enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "example": {
-                                "__end_line__": 9,
-                                "__start_line__": 5,
-                                "acl": [
-                                    "public-read"
-                                ],
-                                "bucket": [
-                                    "example-checkov-bucket"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "__address__": "aws_s3_bucket.example",
-                                "__provider_address__": "aws.default"
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "versioning/enabled",
-                        "resource_type",
-                        "versioning_configuration/status"
-                    ]
-                },
-                "code_block": [
-                    [
-                        5,
-                        "resource \"aws_s3_bucket\" \"example\" {\n"
-                    ],
-                    [
-                        6,
-                        "  bucket        = \"example-checkov-bucket\"\n"
-                    ],
-                    [
-                        7,
-                        "  acl           = \"public-read\" # Vulnerable configuration for testing\n"
-                    ],
-                    [
-                        8,
-                        "  force_destroy = true\n"
-                    ],
-                    [
-                        9,
-                        "}\n"
-                    ]
-                ],
-                "file_path": "/main.tf",
-                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf",
-                "repo_file_path": "/repo2/main.tf",
-                "file_line_range": [
-                    5,
-                    9
-                ],
-                "resource": "aws_s3_bucket.example",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {},
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": null,
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
-            },
-            {
                 "check_id": "CKV_AWS_18",
                 "bc_check_id": "BC_AWS_S3_13",
                 "check_name": "Ensure the S3 bucket has access logging enabled",
@@ -2075,8 +1894,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "networking"
+                        "networking",
+                        "resource_type"
                     ]
                 },
                 "code_block": [
@@ -2157,6 +1976,187 @@
                 "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
             },
             {
+                "check_id": "CKV_AWS_21",
+                "bc_check_id": "BC_AWS_S3_16",
+                "check_name": "Ensure all data stored in the S3 bucket have versioning enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "insecure_bucket": {
+                                "__end_line__": 9,
+                                "__start_line__": 1,
+                                "acl": [
+                                    "public-read"
+                                ],
+                                "bucket": [
+                                    "example-insecure-bucket"
+                                ],
+                                "tags": [
+                                    {
+                                        "Environment": "Dev",
+                                        "Name": "Insecure Bucket"
+                                    }
+                                ],
+                                "__address__": "aws_s3_bucket.insecure_bucket"
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "versioning/enabled",
+                        "resource_type",
+                        "versioning_configuration/status"
+                    ]
+                },
+                "code_block": [
+                    [
+                        1,
+                        "resource \"aws_s3_bucket\" \"insecure_bucket\" {\n"
+                    ],
+                    [
+                        2,
+                        "  bucket = \"example-insecure-bucket\"\n"
+                    ],
+                    [
+                        3,
+                        "  acl    = \"public-read\" # Vulnerabilidad: Permiso p\u00fablico\n"
+                    ],
+                    [
+                        4,
+                        "\n"
+                    ],
+                    [
+                        5,
+                        "  tags = {\n"
+                    ],
+                    [
+                        6,
+                        "    Name        = \"Insecure Bucket\"\n"
+                    ],
+                    [
+                        7,
+                        "    Environment = \"Dev\"\n"
+                    ],
+                    [
+                        8,
+                        "  }\n"
+                    ],
+                    [
+                        9,
+                        "}\n"
+                    ]
+                ],
+                "file_path": "/insecure_bucket.tf",
+                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf",
+                "repo_file_path": "/repo2/insecure_bucket.tf",
+                "file_line_range": [
+                    1,
+                    9
+                ],
+                "resource": "aws_s3_bucket.insecure_bucket",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Environment": "Dev",
+                    "Name": "Insecure Bucket"
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf"
+            },
+            {
+                "check_id": "CKV_AWS_21",
+                "bc_check_id": "BC_AWS_S3_16",
+                "check_name": "Ensure all data stored in the S3 bucket have versioning enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "example": {
+                                "__end_line__": 9,
+                                "__start_line__": 5,
+                                "acl": [
+                                    "public-read"
+                                ],
+                                "bucket": [
+                                    "example-checkov-bucket"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "__address__": "aws_s3_bucket.example",
+                                "__provider_address__": "aws.default"
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "versioning/enabled",
+                        "resource_type",
+                        "versioning_configuration/status"
+                    ]
+                },
+                "code_block": [
+                    [
+                        5,
+                        "resource \"aws_s3_bucket\" \"example\" {\n"
+                    ],
+                    [
+                        6,
+                        "  bucket        = \"example-checkov-bucket\"\n"
+                    ],
+                    [
+                        7,
+                        "  acl           = \"public-read\" # Vulnerable configuration for testing\n"
+                    ],
+                    [
+                        8,
+                        "  force_destroy = true\n"
+                    ],
+                    [
+                        9,
+                        "}\n"
+                    ]
+                ],
+                "file_path": "/main.tf",
+                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf",
+                "repo_file_path": "/repo2/main.tf",
+                "file_line_range": [
+                    5,
+                    9
+                ],
+                "resource": "aws_s3_bucket.example",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {},
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
+            },
+            {
                 "check_id": "CKV_AWS_145",
                 "bc_check_id": "BC_AWS_GENERAL_56",
                 "check_name": "Ensure that S3 buckets are encrypted with KMS by default",
@@ -2184,8 +2184,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
@@ -2283,8 +2283,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
@@ -2333,6 +2333,372 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
+            },
+            {
+                "check_id": "CKV_AWS_20",
+                "bc_check_id": "BC_AWS_S3_1",
+                "check_name": "S3 Bucket has an ACL defined which allows public READ access.",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "insecure_bucket": {
+                                "__end_line__": 9,
+                                "__start_line__": 1,
+                                "acl": [
+                                    "public-read"
+                                ],
+                                "bucket": [
+                                    "example-insecure-bucket"
+                                ],
+                                "tags": [
+                                    {
+                                        "Environment": "Dev",
+                                        "Name": "Insecure Bucket"
+                                    }
+                                ],
+                                "__address__": "aws_s3_bucket.insecure_bucket"
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "access_control_policy/grant",
+                        "resource_type",
+                        "acl",
+                        "access_control_policy/grant/*/grantee/uri",
+                        "access_control_policy"
+                    ]
+                },
+                "code_block": [
+                    [
+                        1,
+                        "resource \"aws_s3_bucket\" \"insecure_bucket\" {\n"
+                    ],
+                    [
+                        2,
+                        "  bucket = \"example-insecure-bucket\"\n"
+                    ],
+                    [
+                        3,
+                        "  acl    = \"public-read\" # Vulnerabilidad: Permiso p\u00fablico\n"
+                    ],
+                    [
+                        4,
+                        "\n"
+                    ],
+                    [
+                        5,
+                        "  tags = {\n"
+                    ],
+                    [
+                        6,
+                        "    Name        = \"Insecure Bucket\"\n"
+                    ],
+                    [
+                        7,
+                        "    Environment = \"Dev\"\n"
+                    ],
+                    [
+                        8,
+                        "  }\n"
+                    ],
+                    [
+                        9,
+                        "}\n"
+                    ]
+                ],
+                "file_path": "/insecure_bucket.tf",
+                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf",
+                "repo_file_path": "/repo2/insecure_bucket.tf",
+                "file_line_range": [
+                    1,
+                    9
+                ],
+                "resource": "aws_s3_bucket.insecure_bucket",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Environment": "Dev",
+                    "Name": "Insecure Bucket"
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf"
+            },
+            {
+                "check_id": "CKV_AWS_20",
+                "bc_check_id": "BC_AWS_S3_1",
+                "check_name": "S3 Bucket has an ACL defined which allows public READ access.",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "example": {
+                                "__end_line__": 9,
+                                "__start_line__": 5,
+                                "acl": [
+                                    "public-read"
+                                ],
+                                "bucket": [
+                                    "example-checkov-bucket"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "__address__": "aws_s3_bucket.example",
+                                "__provider_address__": "aws.default"
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "access_control_policy/grant",
+                        "resource_type",
+                        "acl",
+                        "access_control_policy/grant/*/grantee/uri",
+                        "access_control_policy"
+                    ]
+                },
+                "code_block": [
+                    [
+                        5,
+                        "resource \"aws_s3_bucket\" \"example\" {\n"
+                    ],
+                    [
+                        6,
+                        "  bucket        = \"example-checkov-bucket\"\n"
+                    ],
+                    [
+                        7,
+                        "  acl           = \"public-read\" # Vulnerable configuration for testing\n"
+                    ],
+                    [
+                        8,
+                        "  force_destroy = true\n"
+                    ],
+                    [
+                        9,
+                        "}\n"
+                    ]
+                ],
+                "file_path": "/main.tf",
+                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf",
+                "repo_file_path": "/repo2/main.tf",
+                "file_line_range": [
+                    5,
+                    9
+                ],
+                "resource": "aws_s3_bucket.example",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {},
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
+            },
+            {
+                "check_id": "CKV_AWS_144",
+                "bc_check_id": "BC_AWS_GENERAL_72",
+                "check_name": "Ensure that S3 bucket has cross-region replication enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "insecure_bucket": {
+                                "__end_line__": 9,
+                                "__start_line__": 1,
+                                "acl": [
+                                    "public-read"
+                                ],
+                                "bucket": [
+                                    "example-insecure-bucket"
+                                ],
+                                "tags": [
+                                    {
+                                        "Environment": "Dev",
+                                        "Name": "Insecure Bucket"
+                                    }
+                                ],
+                                "__address__": "aws_s3_bucket.insecure_bucket"
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "replication_configuration/rules/*/status",
+                        "resource_type",
+                        "rule/*/status"
+                    ]
+                },
+                "code_block": [
+                    [
+                        1,
+                        "resource \"aws_s3_bucket\" \"insecure_bucket\" {\n"
+                    ],
+                    [
+                        2,
+                        "  bucket = \"example-insecure-bucket\"\n"
+                    ],
+                    [
+                        3,
+                        "  acl    = \"public-read\" # Vulnerabilidad: Permiso p\u00fablico\n"
+                    ],
+                    [
+                        4,
+                        "\n"
+                    ],
+                    [
+                        5,
+                        "  tags = {\n"
+                    ],
+                    [
+                        6,
+                        "    Name        = \"Insecure Bucket\"\n"
+                    ],
+                    [
+                        7,
+                        "    Environment = \"Dev\"\n"
+                    ],
+                    [
+                        8,
+                        "  }\n"
+                    ],
+                    [
+                        9,
+                        "}\n"
+                    ]
+                ],
+                "file_path": "/insecure_bucket.tf",
+                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf",
+                "repo_file_path": "/repo2/insecure_bucket.tf",
+                "file_line_range": [
+                    1,
+                    9
+                ],
+                "resource": "aws_s3_bucket.insecure_bucket",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Environment": "Dev",
+                    "Name": "Insecure Bucket"
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf"
+            },
+            {
+                "check_id": "CKV_AWS_144",
+                "bc_check_id": "BC_AWS_GENERAL_72",
+                "check_name": "Ensure that S3 bucket has cross-region replication enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "example": {
+                                "__end_line__": 9,
+                                "__start_line__": 5,
+                                "acl": [
+                                    "public-read"
+                                ],
+                                "bucket": [
+                                    "example-checkov-bucket"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "__address__": "aws_s3_bucket.example",
+                                "__provider_address__": "aws.default"
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "replication_configuration/rules/*/status",
+                        "resource_type",
+                        "rule/*/status"
+                    ]
+                },
+                "code_block": [
+                    [
+                        5,
+                        "resource \"aws_s3_bucket\" \"example\" {\n"
+                    ],
+                    [
+                        6,
+                        "  bucket        = \"example-checkov-bucket\"\n"
+                    ],
+                    [
+                        7,
+                        "  acl           = \"public-read\" # Vulnerable configuration for testing\n"
+                    ],
+                    [
+                        8,
+                        "  force_destroy = true\n"
+                    ],
+                    [
+                        9,
+                        "}\n"
+                    ]
+                ],
+                "file_path": "/main.tf",
+                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf",
+                "repo_file_path": "/repo2/main.tf",
+                "file_line_range": [
+                    5,
+                    9
+                ],
+                "resource": "aws_s3_bucket.example",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {},
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
@@ -2512,372 +2878,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
-            },
-            {
-                "check_id": "CKV_AWS_20",
-                "bc_check_id": "BC_AWS_S3_1",
-                "check_name": "S3 Bucket has an ACL defined which allows public READ access.",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "insecure_bucket": {
-                                "__end_line__": 9,
-                                "__start_line__": 1,
-                                "acl": [
-                                    "public-read"
-                                ],
-                                "bucket": [
-                                    "example-insecure-bucket"
-                                ],
-                                "tags": [
-                                    {
-                                        "Environment": "Dev",
-                                        "Name": "Insecure Bucket"
-                                    }
-                                ],
-                                "__address__": "aws_s3_bucket.insecure_bucket"
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "access_control_policy/grant",
-                        "acl",
-                        "access_control_policy/grant/*/grantee/uri",
-                        "resource_type",
-                        "access_control_policy"
-                    ]
-                },
-                "code_block": [
-                    [
-                        1,
-                        "resource \"aws_s3_bucket\" \"insecure_bucket\" {\n"
-                    ],
-                    [
-                        2,
-                        "  bucket = \"example-insecure-bucket\"\n"
-                    ],
-                    [
-                        3,
-                        "  acl    = \"public-read\" # Vulnerabilidad: Permiso p\u00fablico\n"
-                    ],
-                    [
-                        4,
-                        "\n"
-                    ],
-                    [
-                        5,
-                        "  tags = {\n"
-                    ],
-                    [
-                        6,
-                        "    Name        = \"Insecure Bucket\"\n"
-                    ],
-                    [
-                        7,
-                        "    Environment = \"Dev\"\n"
-                    ],
-                    [
-                        8,
-                        "  }\n"
-                    ],
-                    [
-                        9,
-                        "}\n"
-                    ]
-                ],
-                "file_path": "/insecure_bucket.tf",
-                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf",
-                "repo_file_path": "/repo2/insecure_bucket.tf",
-                "file_line_range": [
-                    1,
-                    9
-                ],
-                "resource": "aws_s3_bucket.insecure_bucket",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Environment": "Dev",
-                    "Name": "Insecure Bucket"
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": null,
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf"
-            },
-            {
-                "check_id": "CKV_AWS_20",
-                "bc_check_id": "BC_AWS_S3_1",
-                "check_name": "S3 Bucket has an ACL defined which allows public READ access.",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "example": {
-                                "__end_line__": 9,
-                                "__start_line__": 5,
-                                "acl": [
-                                    "public-read"
-                                ],
-                                "bucket": [
-                                    "example-checkov-bucket"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "__address__": "aws_s3_bucket.example",
-                                "__provider_address__": "aws.default"
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "access_control_policy/grant",
-                        "acl",
-                        "access_control_policy/grant/*/grantee/uri",
-                        "resource_type",
-                        "access_control_policy"
-                    ]
-                },
-                "code_block": [
-                    [
-                        5,
-                        "resource \"aws_s3_bucket\" \"example\" {\n"
-                    ],
-                    [
-                        6,
-                        "  bucket        = \"example-checkov-bucket\"\n"
-                    ],
-                    [
-                        7,
-                        "  acl           = \"public-read\" # Vulnerable configuration for testing\n"
-                    ],
-                    [
-                        8,
-                        "  force_destroy = true\n"
-                    ],
-                    [
-                        9,
-                        "}\n"
-                    ]
-                ],
-                "file_path": "/main.tf",
-                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf",
-                "repo_file_path": "/repo2/main.tf",
-                "file_line_range": [
-                    5,
-                    9
-                ],
-                "resource": "aws_s3_bucket.example",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {},
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": null,
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
-            },
-            {
-                "check_id": "CKV_AWS_144",
-                "bc_check_id": "BC_AWS_GENERAL_72",
-                "check_name": "Ensure that S3 bucket has cross-region replication enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "insecure_bucket": {
-                                "__end_line__": 9,
-                                "__start_line__": 1,
-                                "acl": [
-                                    "public-read"
-                                ],
-                                "bucket": [
-                                    "example-insecure-bucket"
-                                ],
-                                "tags": [
-                                    {
-                                        "Environment": "Dev",
-                                        "Name": "Insecure Bucket"
-                                    }
-                                ],
-                                "__address__": "aws_s3_bucket.insecure_bucket"
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "rule/*/status",
-                        "replication_configuration/rules/*/status"
-                    ]
-                },
-                "code_block": [
-                    [
-                        1,
-                        "resource \"aws_s3_bucket\" \"insecure_bucket\" {\n"
-                    ],
-                    [
-                        2,
-                        "  bucket = \"example-insecure-bucket\"\n"
-                    ],
-                    [
-                        3,
-                        "  acl    = \"public-read\" # Vulnerabilidad: Permiso p\u00fablico\n"
-                    ],
-                    [
-                        4,
-                        "\n"
-                    ],
-                    [
-                        5,
-                        "  tags = {\n"
-                    ],
-                    [
-                        6,
-                        "    Name        = \"Insecure Bucket\"\n"
-                    ],
-                    [
-                        7,
-                        "    Environment = \"Dev\"\n"
-                    ],
-                    [
-                        8,
-                        "  }\n"
-                    ],
-                    [
-                        9,
-                        "}\n"
-                    ]
-                ],
-                "file_path": "/insecure_bucket.tf",
-                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf",
-                "repo_file_path": "/repo2/insecure_bucket.tf",
-                "file_line_range": [
-                    1,
-                    9
-                ],
-                "resource": "aws_s3_bucket.insecure_bucket",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Environment": "Dev",
-                    "Name": "Insecure Bucket"
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": null,
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/insecure_bucket.tf"
-            },
-            {
-                "check_id": "CKV_AWS_144",
-                "bc_check_id": "BC_AWS_GENERAL_72",
-                "check_name": "Ensure that S3 bucket has cross-region replication enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "example": {
-                                "__end_line__": 9,
-                                "__start_line__": 5,
-                                "acl": [
-                                    "public-read"
-                                ],
-                                "bucket": [
-                                    "example-checkov-bucket"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "__address__": "aws_s3_bucket.example",
-                                "__provider_address__": "aws.default"
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "rule/*/status",
-                        "replication_configuration/rules/*/status"
-                    ]
-                },
-                "code_block": [
-                    [
-                        5,
-                        "resource \"aws_s3_bucket\" \"example\" {\n"
-                    ],
-                    [
-                        6,
-                        "  bucket        = \"example-checkov-bucket\"\n"
-                    ],
-                    [
-                        7,
-                        "  acl           = \"public-read\" # Vulnerable configuration for testing\n"
-                    ],
-                    [
-                        8,
-                        "  force_destroy = true\n"
-                    ],
-                    [
-                        9,
-                        "}\n"
-                    ]
-                ],
-                "file_path": "/main.tf",
-                "file_abs_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf",
-                "repo_file_path": "/repo2/main.tf",
-                "file_line_range": [
-                    5,
-                    9
-                ],
-                "resource": "aws_s3_bucket.example",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {},
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": null,
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/home/runner/work/checkov-central/checkov-central/repo2/main.tf"
